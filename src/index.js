@@ -1,14 +1,39 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import reportWebVitals from './reportWebVitals';
+import rootReducer from './store';
+
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+// Views
+import App from './App';
+import HomeContainer from './views/HomeContainer';
+import AuthContainer from './views/AuthContainer';
+import RegistrationContainer from './views/RegistrationContainer';
+import ErrorContainer from './views/ErrorContainer';
+
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
+  <Provider store={store}>
     <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById("root")
+      <BrowserRouter>
+        <App>
+          <Switch>
+            <Route exact path="/" component={HomeContainer} />
+            <Route exact path="/auth" component={AuthContainer} />
+            <Route exact path="/registration" component={RegistrationContainer} />
+            <Route exact path="*" component={ErrorContainer} />
+          </Switch>
+        </App>
+      </BrowserRouter>
+    </React.StrictMode>
+  </Provider>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
