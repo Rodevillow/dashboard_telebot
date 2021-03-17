@@ -1,6 +1,32 @@
 @import '../variables';
 
 .header {
-    background-color: red;
-    padding: 30px;
+    // background-color: red;
+
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .menu {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+
+        li {
+            a {
+                margin: 0 10px;
+                text-transform: lowercase;
+                font-size: 13px;
+                &:hover {
+                    cursor: pointer;
+                    color: wheat;
+                }
+
+                &.active {
+                    color: green;
+                }
+            }
+        }
+    }
 }

@@ -1,6 +1,20 @@
 @import "../variables";
 
 .registration {
-  background-color: red;
-  padding: 30px;
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__form-wrapper {
+    padding: 20px;
+    background-color: #a9a9a933;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+
+    .field-wrapper {
+      margin-bottom: 15px;
+    }
+  }
 }
